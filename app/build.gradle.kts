@@ -3,15 +3,16 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.parcelize)
 }
 
 android {
-    namespace = "com.example.weatherapp"
+    namespace = "com.smith.weatherapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.weatherapp"
-        minSdk = 24
+        applicationId = "com.smith.weatherapp"
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -20,6 +21,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        val key = property("apikey")?.toString() ?: error("you should add apikey to GradleProperties")
+        buildConfigField("String", "WEATHER_API_KEY", "\"$key\"")
     }
 
     buildTypes {
@@ -40,9 +43,10 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
     packaging {
         resources {
