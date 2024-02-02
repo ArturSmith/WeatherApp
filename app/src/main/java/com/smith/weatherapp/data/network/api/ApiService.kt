@@ -2,6 +2,7 @@ package com.smith.weatherapp.data.network.api
 
 import com.smith.weatherapp.data.network.dto.CityDto
 import com.smith.weatherapp.data.network.dto.WeatherCurrentDto
+import com.smith.weatherapp.data.network.dto.WeatherForecastDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,7 +16,7 @@ interface ApiService {
     suspend fun loadForecast(
         @Query("q") query: String,
         @Query("days") daysCount: Int = 4
-    ): WeatherCurrentDto
+    ): WeatherForecastDto
 
 
     @GET("search.json")
