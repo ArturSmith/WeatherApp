@@ -13,8 +13,6 @@ import com.smith.weatherapp.domain.usecase.ObserveFavoriteStateUseCase
 import com.smith.weatherapp.presentation.details.DetailsStore.Intent
 import com.smith.weatherapp.presentation.details.DetailsStore.Label
 import com.smith.weatherapp.presentation.details.DetailsStore.State
-import com.smith.weatherapp.presentation.search.SearchStore
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +20,7 @@ interface DetailsStore : Store<Intent, State, Label> {
 
     sealed interface Intent {
         data object ClickBack : Intent
-        data object ClickAddToFavorite : Intent
+        data object ClickChangeFavouriteStatus : Intent
     }
 
     data class State(
@@ -100,7 +98,7 @@ class DetailsStoreFactory @Inject constructor(
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Msg, Label>() {
         override fun executeIntent(intent: Intent, getState: () -> State) {
             when (intent) {
-                Intent.ClickAddToFavorite -> {
+                Intent.ClickChangeFavouriteStatus -> {
                     val state = getState()
                     scope.launch {
                         if (state.isFavorite) {

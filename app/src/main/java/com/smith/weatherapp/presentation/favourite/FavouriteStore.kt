@@ -8,17 +8,17 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.smith.weatherapp.domain.entity.City
 import com.smith.weatherapp.domain.usecase.GetCurrentWeatherUseCase
 import com.smith.weatherapp.domain.usecase.GetFavoriteCitiesUseCase
-import com.smith.weatherapp.presentation.favourite.FavoriteStore.Intent
-import com.smith.weatherapp.presentation.favourite.FavoriteStore.Label
-import com.smith.weatherapp.presentation.favourite.FavoriteStore.State
+import com.smith.weatherapp.presentation.favourite.FavouriteStore.Intent
+import com.smith.weatherapp.presentation.favourite.FavouriteStore.Label
+import com.smith.weatherapp.presentation.favourite.FavouriteStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-interface FavoriteStore : Store<Intent, State, Label> {
+interface FavouriteStore : Store<Intent, State, Label> {
 
     sealed interface Intent {
         data object ClickSearch : Intent
-        data object ClickToFavourite : Intent
+        data object ClickAddToFavourite : Intent
         data class CityItemClicked(val city: City) : Intent
     }
 
@@ -55,8 +55,8 @@ class FavoriteStoreFactory @Inject constructor(
     private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase
 ) {
 
-    fun create(): FavoriteStore =
-        object : FavoriteStore, Store<Intent, State, Label> by storeFactory.create(
+    fun create(): FavouriteStore =
+        object : FavouriteStore, Store<Intent, State, Label> by storeFactory.create(
             name = "FavoriteStore",
             initialState = State(emptyList()),
             bootstrapper = BootstrapperImpl(),
@@ -107,7 +107,7 @@ class FavoriteStoreFactory @Inject constructor(
                     publish(Label.ClickSearch)
                 }
 
-                Intent.ClickToFavourite -> {
+                Intent.ClickAddToFavourite -> {
                     publish(Label.ClickToFavourite)
                 }
             }
