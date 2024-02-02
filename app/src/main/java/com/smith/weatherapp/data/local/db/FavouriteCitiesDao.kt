@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.smith.weatherapp.data.local.models.CityDbModel
 import kotlinx.coroutines.flow.Flow
 @Dao
-interface FavoriteCitiesDao {
+interface FavouriteCitiesDao {
 
     @Query("SELECT * FROM favourite_cities")
     fun getFavoriteCities(): Flow<List<CityDbModel>>

@@ -1,4 +1,4 @@
-package com.smith.weatherapp.presentation.favorite
+package com.smith.weatherapp.presentation.favourite
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
@@ -8,9 +8,9 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.smith.weatherapp.domain.entity.City
 import com.smith.weatherapp.domain.usecase.GetCurrentWeatherUseCase
 import com.smith.weatherapp.domain.usecase.GetFavoriteCitiesUseCase
-import com.smith.weatherapp.presentation.favorite.FavoriteStore.Intent
-import com.smith.weatherapp.presentation.favorite.FavoriteStore.Label
-import com.smith.weatherapp.presentation.favorite.FavoriteStore.State
+import com.smith.weatherapp.presentation.favourite.FavoriteStore.Intent
+import com.smith.weatherapp.presentation.favourite.FavoriteStore.Label
+import com.smith.weatherapp.presentation.favourite.FavoriteStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

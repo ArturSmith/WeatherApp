@@ -54,7 +54,7 @@ class SearchStoreFactory @Inject constructor(
 
     fun create(reasonToOpen: ReasonToOpen): SearchStore =
         object : SearchStore, Store<Intent, State, Label> by storeFactory.create(
-            name = "SearchStroreStore",
+            name = "SearchStore",
             initialState = State(
                 searchQuery = "",
                 searchState = State.SearchState.Initial

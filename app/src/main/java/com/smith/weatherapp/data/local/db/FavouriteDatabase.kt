@@ -7,14 +7,14 @@ import androidx.room.RoomDatabase
 import com.smith.weatherapp.data.local.models.CityDbModel
 
 @Database(entities = [CityDbModel::class], version = 1, exportSchema = false)
-abstract class FavoriteDatabase() : RoomDatabase() {
+abstract class FavouriteDatabase() : RoomDatabase() {
 
-    abstract fun FavoriteCitiesDao(): FavoriteCitiesDao
+    abstract fun FavoriteCitiesDao(): FavouriteCitiesDao
     companion object {
         private const val NAME = "FavoriteDatabase"
-        private var INSTANCE: FavoriteDatabase? = null
+        private var INSTANCE: FavouriteDatabase? = null
         private val LOCK = Any()
-        fun getInstance(context: Context): FavoriteDatabase {
+        fun getInstance(context: Context): FavouriteDatabase {
             INSTANCE?.let { return it }
 
             synchronized(LOCK) {
@@ -22,7 +22,7 @@ abstract class FavoriteDatabase() : RoomDatabase() {
 
                 val database = Room.databaseBuilder(
                     context = context,
-                    klass = FavoriteDatabase::class.java,
+                    klass = FavouriteDatabase::class.java,
                     name = NAME
                 ).build()
 

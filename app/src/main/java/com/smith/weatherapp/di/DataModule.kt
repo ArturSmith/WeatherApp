@@ -1,11 +1,11 @@
 package com.smith.weatherapp.di
 
 import android.content.Context
-import com.smith.weatherapp.data.local.db.FavoriteCitiesDao
-import com.smith.weatherapp.data.local.db.FavoriteDatabase
+import com.smith.weatherapp.data.local.db.FavouriteCitiesDao
+import com.smith.weatherapp.data.local.db.FavouriteDatabase
 import com.smith.weatherapp.data.network.api.ApiFactory
 import com.smith.weatherapp.data.network.api.ApiService
-import com.smith.weatherapp.data.repository.FavoriteRepositoryImpl
+import com.smith.weatherapp.data.repository.FavouriteRepositoryImpl
 import com.smith.weatherapp.data.repository.SearchRepositoryImpl
 import com.smith.weatherapp.data.repository.WeatherRepositoryImpl
 import com.smith.weatherapp.domain.repository.FavoriteRepository
@@ -19,7 +19,7 @@ import dagger.Provides
 interface DataModule {
     @ApplicationScope
     @Binds
-    fun favoriteRepository(impl: FavoriteRepositoryImpl): FavoriteRepository
+    fun favoriteRepository(impl: FavouriteRepositoryImpl): FavoriteRepository
 
     @ApplicationScope
     @Binds
@@ -36,13 +36,13 @@ interface DataModule {
 
         @ApplicationScope
         @Provides
-        fun provideFavoriteDatabase(context: Context): FavoriteDatabase {
-            return FavoriteDatabase.getInstance(context)
+        fun provideFavoriteDatabase(context: Context): FavouriteDatabase {
+            return FavouriteDatabase.getInstance(context)
         }
 
         @ApplicationScope
         @Provides
-        fun provideFavoriteDao(database: FavoriteDatabase): FavoriteCitiesDao {
+        fun provideFavoriteDao(database: FavouriteDatabase): FavouriteCitiesDao {
             return database.FavoriteCitiesDao()
         }
     }
